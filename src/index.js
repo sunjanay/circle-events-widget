@@ -80,11 +80,29 @@ document.addEventListener('DOMContentLoaded', () => {
       
     } catch (error) {
       console.error('Error:', error);
-      eventsContainer.innerHTML = `
-        <div class="error">
-          Failed to load events. Please try again later.
-        </div>
-      `;
+      
+      // Check if this is a CORS error (common when hosting on GitHub Pages)
+      if (error.message.includes('CORS') || error.message.includes('fetch') || error.name === 'TypeError') {
+        eventsContainer.innerHTML = `
+          <div class="error">
+            <h3>⚠️ CORS Restriction</h3>
+            <p>This widget needs to be served from your own domain to fetch live events from Circle.so.</p>
+            <p><strong>Options:</strong></p>
+            <ul style="text-align: left; margin: 20px 0;">
+              <li>Embed this widget on your website (not GitHub Pages)</li>
+              <li>Run locally: <code>npm run dev</code></li>
+              <li>Deploy to Vercel/Netlify with backend support</li>
+            </ul>
+            <p>For embedding instructions, see the <a href="https://github.com/sunjanay/circle-events-widget" target="_blank">GitHub repository</a>.</p>
+          </div>
+        `;
+      } else {
+        eventsContainer.innerHTML = `
+          <div class="error">
+            Failed to load events. Please try again later.
+          </div>
+        `;
+      }
     }
   }
   
