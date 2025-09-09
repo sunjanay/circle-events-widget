@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
             </div>
-            <div class="event-host">Hosted by: ${event.host || event.member_name || 'Foster Greatness'}</div>
+            <div class="event-host">${event.host || event.member_name || 'Foster Greatness'}</div>
             ${description ? `<div class="event-description">${description}</div>` : ''}
             <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
           </div>
