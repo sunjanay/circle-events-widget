@@ -225,6 +225,12 @@ html, body {
   justify-content: center;
 }
 
+/* Event details section */
+.event-details {
+  flex: 1;
+  min-width: 0;
+}
+
 .event-title {
   font-weight: 700;
   margin-bottom: 8px;
@@ -409,10 +415,12 @@ html, body {
   }
   
   .event-main-info {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: flex-start;
     gap: 16px;
     text-align: left;
+    justify-content: flex-start;
   }
   
   .event-date-block {
@@ -433,6 +441,8 @@ html, body {
   .event-details {
     flex: 1;
     min-width: 0;
+    display: flex !important;
+    flex-direction: column;
   }
   
   .event-title {
