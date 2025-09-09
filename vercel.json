@@ -19,9 +19,5 @@
       "src": "/(.*)",
       "dest": "/public/$1"
     }
-  ],
-  "env": {
-    "CIRCLE_API_KEY": "@circle_api_key",
-    "CIRCLE_COMMUNITY_ID": "@circle_community_id"
-  }
+  ]
 }
