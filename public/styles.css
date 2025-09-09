@@ -74,19 +74,80 @@
   padding: 20px 24px;
 }
 
+/* Event header with calendar and title */
+.event-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+/* Apple Calendar-style date block */
+.event-date-calendar {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calendar-month {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.calendar-day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Event title and datetime info */
+.event-datetime-info {
+  flex: 1;
+  min-width: 0;
+}
+
 .event-title {
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #2c3e50;
   font-size: 1.1rem;
   line-height: 1.3;
 }
 
-.event-date {
+.event-datetime {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.event-day {
   font-size: 0.9rem;
   color: #667eea;
-  margin-bottom: 6px;
   font-weight: 600;
+}
+
+.event-time {
+  font-size: 0.9rem;
+  color: #e74c3c;
+  font-weight: 700;
+  background: #fef2f2;
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: 1px solid #fecaca;
 }
 
 .event-host {
@@ -175,8 +236,31 @@
     padding: 16px 20px;
   }
   
+  .event-header {
+    gap: 12px;
+  }
+  
+  .event-date-calendar {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .calendar-month {
+    font-size: 0.7rem;
+  }
+  
+  .calendar-day {
+    font-size: 1.3rem;
+  }
+  
   .event-title {
     font-size: 1rem;
+  }
+  
+  .event-datetime {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }
 

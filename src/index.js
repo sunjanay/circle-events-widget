@@ -31,15 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const eventElement = document.createElement('div');
         eventElement.className = 'event-item';
         
-        // Format the date
+        // Format the date and time separately
         const eventDate = new Date(event.starts_at);
-        const formattedDate = eventDate.toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
+        
+        // Get date components for calendar-style display
+        const dayOfMonth = eventDate.getDate();
+        const monthName = eventDate.toLocaleDateString('en-US', { month: 'short' });
+        const dayOfWeek = eventDate.toLocaleDateString('en-US', { weekday: 'long' });
+        const year = eventDate.getFullYear();
+        
+        // Get time in 12-hour format
+        const timeString = eventDate.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: '2-digit',
+          hour12: true
         });
         
         // Extract first sentence or first 150 characters from body as description
@@ -55,8 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         eventElement.innerHTML = `
           ${event.cover_image_url ? `<div class="event-cover-image"><img src="${event.cover_image_url}" alt="${event.name || 'Event cover'}" loading="lazy"></div>` : ''}
           <div class="event-content">
-            <div class="event-title">${event.name || 'Untitled Event'}</div>
-            <div class="event-date">${formattedDate}</div>
+            <div class="event-header">
+              <div class="event-date-calendar">
+                <div class="calendar-month">${monthName}</div>
+                <div class="calendar-day">${dayOfMonth}</div>
+              </div>
+              <div class="event-datetime-info">
+                <div class="event-title">${event.name || 'Untitled Event'}</div>
+                <div class="event-datetime">
+                  <span class="event-day">${dayOfWeek}, ${year}</span>
+                  <span class="event-time">${timeString}</span>
+                </div>
+              </div>
+            </div>
             <div class="event-host">Hosted by: ${event.host || event.member_name || 'Foster Greatness'}</div>
             ${description ? `<div class="event-description">${description}</div>` : ''}
             <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
