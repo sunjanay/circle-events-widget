@@ -31,11 +31,11 @@
 
 /* Individual event item */
 .event-item {
-  padding: 20px 24px;
   border-bottom: 1px solid #f0f2f5;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .event-item:last-child {
@@ -45,6 +45,33 @@
 .event-item:hover {
   background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
   transform: translateX(2px);
+}
+
+/* Event cover image */
+.event-cover-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-cover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-item:hover .event-cover-image img {
+  transform: scale(1.05);
+}
+
+/* Event content section */
+.event-content {
+  padding: 20px 24px;
 }
 
 .event-title {
@@ -144,12 +171,16 @@
     border-right: none;
   }
   
-  .event-item {
+  .event-content {
     padding: 16px 20px;
   }
   
   .event-title {
     font-size: 1rem;
+  }
+  
+  .event-cover-image {
+    height: 160px;
   }
 }
 

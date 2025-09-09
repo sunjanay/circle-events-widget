@@ -53,11 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         eventElement.innerHTML = `
-          <div class="event-title">${event.name || 'Untitled Event'}</div>
-          <div class="event-date">${formattedDate}</div>
-          <div class="event-host">Hosted by: ${event.host || event.member_name || 'Foster Greatness'}</div>
-          ${description ? `<div class="event-description">${description}</div>` : ''}
-          <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
+          ${event.cover_image_url ? `<div class="event-cover-image"><img src="${event.cover_image_url}" alt="${event.name || 'Event cover'}" loading="lazy"></div>` : ''}
+          <div class="event-content">
+            <div class="event-title">${event.name || 'Untitled Event'}</div>
+            <div class="event-date">${formattedDate}</div>
+            <div class="event-host">Hosted by: ${event.host || event.member_name || 'Foster Greatness'}</div>
+            ${description ? `<div class="event-description">${description}</div>` : ''}
+            <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
+          </div>
         `;
         
         // Add click handler to open the event in a new tab if URL is available
