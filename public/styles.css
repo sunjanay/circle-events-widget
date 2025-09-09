@@ -3,30 +3,117 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   max-width: 800px;
   margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  background: #fff;
-  border: 1px solid #e1e5e9;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
 }
 
 /* Widget header */
 #circle-events-widget h2 {
   margin: 0;
-  padding: 24px 32px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 32px 32px;
+  background: #2c3e50;
   color: white;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 600;
   text-align: center;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
+  position: relative;
 }
 
 /* Events container */
 .events-container {
   padding: 0;
-  max-height: 600px;
+  max-height: 700px;
   overflow-y: auto;
+}
+
+/* Month header */
+.month-header {
+  background: #f8f9fa;
+  border-bottom: 2px solid #2c3e50;
+  padding: 20px 32px;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.month-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+.month-events-count {
+  background: #2c3e50;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Month navigation */
+.month-navigation {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.nav-button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.15);
+}
+
+.nav-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.25);
+  background: #34495e;
+}
+
+.nav-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+/* Month container */
+.month-container {
+  background: #ffffff;
+  margin-bottom: 24px;
 }
 
 /* Individual event item */
@@ -37,7 +124,8 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  padding: 20px 32px;
 }
 
 .event-item:last-child {
@@ -49,19 +137,52 @@
   transform: none;
 }
 
-/* Event cover image - positioned on the left */
+/* Event date block - calendar style */
+.event-date-block {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 20px;
+  padding: 8px;
+  background: #2c3e50;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 3px 10px rgba(44, 62, 80, 0.2);
+}
+
+.calendar-day {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.calendar-weekday {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* Event cover image - positioned after date */
 .event-cover-image {
   flex-shrink: 0;
   width: 180px;
-  aspect-ratio: 1024 / 366; /* Match Circle.so cover image ratio */
+  height: calc(180px * 366 / 1024); /* Correct aspect ratio: ~64px height */
   overflow: hidden;
   background: #f8f9fa;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  margin-right: 24px;
-  order: 1;
+  margin-right: 20px;
+  align-self: center;
 }
 
 .event-cover-image img {
@@ -78,93 +199,54 @@
 
 /* Event content section */
 .event-content {
-  padding: 24px 32px;
   flex: 1;
   min-width: 0;
-  order: 2;
+  padding: 0;
 }
 
-/* Event header with calendar and title */
-.event-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  margin-bottom: 16px;
-}
-
-/* Clean calendar-style date block */
-.event-date-calendar {
-  flex-shrink: 0;
-  width: 80px;
+/* Event main info container */
+.event-main-info {
+  margin-bottom: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-right: 8px;
-}
-
-.calendar-month {
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #6b7280;
-  letter-spacing: 0.5px;
-  line-height: 1;
-  margin-bottom: 2px;
-}
-
-.calendar-day {
-  font-size: 2.25rem;
-  font-weight: 300;
-  line-height: 1;
-  color: #1f2937;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-}
-
-/* Event title and datetime info */
-.event-datetime-info {
-  flex: 1;
-  min-width: 0;
+  justify-content: center;
 }
 
 .event-title {
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #2c3e50;
   font-size: 1.1rem;
   line-height: 1.3;
 }
 
+/* Event meta information */
+.event-meta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
 .event-datetime {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 2px;
-}
-
-.event-day {
-  font-size: 0.875rem;
-  color: #6b7280;
-  font-weight: 400;
 }
 
 .event-time {
   font-size: 0.875rem;
-  color: #6b7280;
-  font-weight: 400;
-}
-
-.event-time::after {
-  content: "•";
-  color: #d1d5db;
-  font-weight: bold;
-  margin: 0 8px;
+  color: #2c3e50;
+  font-weight: 600;
+  background: #ecf0f1;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
 .event-host {
   font-size: 0.875rem;
   color: #374151;
-  margin-bottom: 8px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -177,21 +259,20 @@
 }
 
 .event-description {
-  font-size: 0.9rem;
-  color: #555;
-  margin: 10px 0 8px 0;
+  font-size: 0.85rem;
+  color: #5a6c7d;
+  margin-top: 8px;
   line-height: 1.5;
   background: #f8f9fa;
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 8px;
-  border-left: 3px solid #667eea;
+  border-left: 3px solid #2c3e50;
 }
 
 .event-location {
   font-size: 0.85rem;
   color: #27ae60;
   font-weight: 600;
-  margin-top: 8px;
   display: inline-block;
   background: #e8f5e8;
   padding: 4px 8px;
@@ -202,7 +283,7 @@
 .loading {
   text-align: center;
   padding: 40px 20px;
-  color: #667eea;
+  color: #2c3e50;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -251,52 +332,65 @@
     border-right: none;
   }
   
-  .event-item {
+  .month-header {
+    padding: 12px 20px;
     flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
   
-  .event-content {
+  .month-title {
+    font-size: 1.2rem;
+  }
+  
+  .month-navigation {
+    margin: 0 -20px 24px -20px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .nav-title {
+    font-size: 0.8rem;
+  }
+  
+  .nav-button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .event-item {
     padding: 16px 20px;
-    order: 2;
+    flex-wrap: wrap;
   }
   
-  .event-cover-image {
-    width: 100%;
-    aspect-ratio: 1024 / 366;
-    margin-right: 0;
-    margin-bottom: 0;
-    border-radius: 0;
-    order: 1;
-  }
-  
-  .event-cover-image img {
-    border-radius: 0;
-  }
-  
-  .event-header {
-    gap: 12px;
-  }
-  
-  .event-date-calendar {
+  .event-date-block {
     width: 60px;
-  }
-  
-  .calendar-month {
-    font-size: 0.7rem;
+    margin-right: 16px;
   }
   
   .calendar-day {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+  }
+  
+  .calendar-weekday {
+    font-size: 0.7rem;
+  }
+  
+  .event-cover-image {
+    width: 140px;
+    height: calc(140px * 366 / 1024);
+    margin-right: 16px;
   }
   
   .event-title {
     font-size: 1rem;
   }
   
-  .event-datetime {
+  .event-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 6px;
   }
 }
 
