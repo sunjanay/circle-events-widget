@@ -1,7 +1,7 @@
 /* Main widget container */
 #circle-events-widget {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -13,7 +13,7 @@
 /* Widget header */
 #circle-events-widget h2 {
   margin: 0;
-  padding: 20px 24px;
+  padding: 24px 32px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   font-size: 1.3rem;
@@ -71,26 +71,26 @@
 
 /* Event content section */
 .event-content {
-  padding: 20px 24px;
+  padding: 24px 32px;
 }
 
 /* Event header with calendar and title */
 .event-header {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: 24px;
+  margin-bottom: 16px;
 }
 
 /* Clean calendar-style date block */
 .event-date-calendar {
   flex-shrink: 0;
-  width: 70px;
+  width: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-right: 4px;
+  margin-right: 8px;
 }
 
 .calendar-month {
