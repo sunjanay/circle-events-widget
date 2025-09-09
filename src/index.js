@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="event-datetime-info">
                 <div class="event-title">${event.name || 'Untitled Event'}</div>
                 <div class="event-datetime">
-                  <span class="event-day">${dayOfWeek}, ${year}</span>
                   <span class="event-time">${timeString}</span>
+                  <span class="event-day">${dayOfWeek}, ${year}</span>
                 </div>
               </div>
             </div>
