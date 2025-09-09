@@ -361,16 +361,19 @@
   
   .event-item {
     padding: 16px 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
   }
   
   .event-date-block {
-    width: 60px;
-    margin-right: 16px;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px auto;
   }
   
   .calendar-day {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   
   .calendar-weekday {
@@ -378,19 +381,37 @@
   }
   
   .event-cover-image {
-    width: 140px;
-    height: calc(140px * 366 / 1024);
-    margin-right: 16px;
+    width: 100%;
+    max-width: 300px;
+    height: calc(300px * 366 / 1024);
+    margin: 0 auto 16px auto;
+    border-radius: 12px;
+  }
+  
+  .event-content {
+    width: 100%;
+  }
+  
+  .event-main-info {
+    text-align: center;
   }
   
   .event-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
   }
   
   .event-meta {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .event-datetime,
+  .event-host,
+  .event-location {
+    margin: 0 auto;
   }
 }
 
