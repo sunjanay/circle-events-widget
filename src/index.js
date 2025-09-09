@@ -1,17 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const eventsContainer = document.getElementById('events-container');
   
-  // Fetch events directly from Circle.so API
+  // Fetch events from our backend
   async function fetchEvents() {
     try {
-      const response = await fetch('https://app.circle.so/api/admin/v2/events', {
-        headers: {
-          'Authorization': 'Token token=MSpbmfA3JCzzLjXrQca7yQaLQbkrd9aR',
-          'host': 'community.fostergreatness.co',
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
+      const response = await fetch('/api/events');
       if (!response.ok) {
         throw new Error('Failed to fetch events');
       }
