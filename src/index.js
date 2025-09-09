@@ -131,20 +131,22 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           
           eventElement.innerHTML = `
-            <div class="event-date-block">
-              <div class="calendar-day">${dayOfMonth}</div>
-              <div class="calendar-weekday">${dayOfWeek}</div>
-            </div>
             ${event.cover_image_url ? `<div class="event-cover-image"><img src="${event.cover_image_url}" alt="${event.name || 'Event cover'}" loading="lazy"></div>` : ''}
             <div class="event-content">
               <div class="event-main-info">
-                <div class="event-title">${event.name || 'Untitled Event'}</div>
-                <div class="event-meta">
-                  <div class="event-datetime">
-                    <span class="event-time">${timeString}</span>
+                <div class="event-date-block">
+                  <div class="calendar-day">${dayOfMonth}</div>
+                  <div class="calendar-weekday">${dayOfWeek}</div>
+                </div>
+                <div class="event-details">
+                  <div class="event-title">${event.name || 'Untitled Event'}</div>
+                  <div class="event-meta">
+                    <div class="event-datetime">
+                      <span class="event-time">${timeString}</span>
+                    </div>
+                    <div class="event-host">${event.host || event.member_name || 'Foster Greatness'}</div>
+                    <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
                   </div>
-                  <div class="event-host">${event.host || event.member_name || 'Foster Greatness'}</div>
-                  <div class="event-location">${event.location_type === 'virtual' ? '🌐 Virtual Event' : '📍 In-Person'}</div>
                 </div>
               </div>
             </div>
