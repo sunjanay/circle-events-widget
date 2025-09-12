@@ -341,6 +341,15 @@ html, body {
   80%, 100% { content: '...'; }
 }
 
+/* Medium screen adjustments */
+@media (max-width: 900px) and (min-width: 601px) {
+  .event-cover-image {
+    width: 120px;
+    height: calc(120px * 366 / 1024);
+    margin-left: 15px;
+  }
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   /* Additional mobile scroll fixes */
