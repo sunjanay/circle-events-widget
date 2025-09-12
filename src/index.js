@@ -131,13 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           
           eventElement.innerHTML = `
-            ${event.cover_image_url ? `<div class="event-cover-image"><img src="${event.cover_image_url}" alt="${event.name || 'Event cover'}" loading="lazy"></div>` : ''}
+            <div class="event-date-block">
+              <div class="calendar-day">${dayOfMonth}</div>
+              <div class="calendar-weekday">${dayOfWeek}</div>
+            </div>
             <div class="event-content">
               <div class="event-main-info">
-                <div class="event-date-block">
-                  <div class="calendar-day">${dayOfMonth}</div>
-                  <div class="calendar-weekday">${dayOfWeek}</div>
-                </div>
                 <div class="event-details">
                   <div class="event-title">${event.name || 'Untitled Event'}</div>
                   <div class="event-meta">
@@ -150,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
             </div>
+            ${event.cover_image_url ? `<div class="event-cover-image"><img src="${event.cover_image_url}" alt="${event.name || 'Event cover'}" loading="lazy"></div>` : ''}
           `;
           
           // Add click handler to open the event in a new tab if URL is available
